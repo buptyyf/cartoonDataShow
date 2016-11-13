@@ -1,0 +1,2 @@
+# cartoonDataShow
+从各大动漫网站抓取到数据后存储在mongodb中，然后用python(flask)提供的路由和接口，在前端用react+echarts进行数据展示
