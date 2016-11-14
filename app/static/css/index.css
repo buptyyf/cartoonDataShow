@@ -1,0 +1,26 @@
+body {
+  margin-top: 80px;
+  /* 100px is double the height of the navbar - I made it a big larger for some more space - keep it at 50px at least if you want to use the fixed top nav */
+}
+body footer {
+  margin: 50px 0;
+}
+body .gap {
+  margin: 25px 0;
+}
+body .title {
+  font-size: x-large;
+  font-weight: bold;
+  font-family: 'SimHei';
+}
+body hr {
+  color: black;
+}
+body .form-sign {
+  max-width: 450px;
+  padding: 20px;
+  margin: 0 auto;
+}
+body input {
+  margin-bottom: 5px;
+}

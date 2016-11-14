@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>注册UNICORN</title>
+    <link type="text/css" rel="stylesheet" href="../static/css/bootstrap.css">
+    <link type="text/css" rel="stylesheet" href="../static/css/index.css">
+    <script type="text/javascript" src="http://libs.baidu.com/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    <!--script type="text/javascript" src="../static/js/lib/react.js"></script>
+    <script type="text/javascript" src="../static/js/lib/less.min.js"></script>
+    <script type="text/javascript" src="../static/js/lib/jquery.min.js"></script>
+    <script type="text/javascript" src="../static/js/lib/index.js"></script-->
+</head>
+<body>
+    <div id="container">
+        <form class="form-sign" role="form" method="post" action="/signup" id="signup_form">
+            <h2 class="form-sign-heading">欢迎注册</h2>
+            <input type="text" class="form-control" placeholder="Username" name="username" required atuofocus />
+            <input type="password" id="password" class="form-control" placeholder="Password" name="password" required />
+            <input type="password" class="form-control" placeholder="Repeat Password" name="rpassword" required />
+            <button class="btn btn-md btn-primary btn-block" type="submit">注册</button>
+        </form>
+    </div>
+    <script>
+        $().ready(function(){
+            $('#signup_form').validate({
+                rules: {
+                    rpassword: {
+                        equalTo: '#password'
+                    }
+                },
+            });
+        })
+    </script>
+</body>
+</html>
