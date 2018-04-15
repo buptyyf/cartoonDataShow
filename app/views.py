@@ -1,12 +1,13 @@
 from flask import render_template, request, jsonify, redirect, url_for, flash
 from app import app
 from app import db, login_manager
-import flask.ext.login as flask_login
+import flask_login as flask_login
 from .models import Info,Comment,User,Info_increment
 import json
 import logging
 log_file = "./basic_logger.log"
 logging.basicConfig(filename = log_file, level = logging.DEBUG)
+
 
 @login_manager.user_loader
 def load_user(id):
@@ -17,6 +18,7 @@ def load_user(id):
     user.get_id()
     logging.warning(user.__dict__)
     return user
+
 
 @login_manager.unauthorized_handler
 def unauthorized_callback():
@@ -84,6 +86,8 @@ output:
     data:[object,object,object], #object详见models中的Info数据结构
 }
 '''
+
+
 @app.route("/api/info/radar", methods=["POST"])
 def get_data_by_datetime_webname():
     dateTime = request.form.get("dateTime")
@@ -96,6 +100,7 @@ def get_data_by_datetime_webname():
 
     return jsonify(status="success", data=data)
 
+
 '''
 url: "/api/info/line"
 type: post
@@ -107,6 +112,8 @@ output:
     data:[object,object,object], #object详见models中的Info数据结构
 }
 '''
+
+
 @app.route("/api/info/line", methods=["POST"])
 def get_data_by_cartoonname_webname():
     cartoonName = request.form.get("cartoonName")
@@ -114,6 +121,7 @@ def get_data_by_cartoonname_webname():
     data = Info.objects(name__contains=cartoonName,webName__contains=webName).order_by('crawlTime')
 
     return jsonify(status="success", data=data)
+
 
 '''
 url: "/api/info/compare"
@@ -137,6 +145,8 @@ output:
     ]
 }
 '''
+
+
 @app.route("/api/info/compare", methods=["POST"])
 def get_data_by_webname_kind():
     webName = request.form.get("webName")
@@ -172,6 +182,7 @@ output:
     ]
 '''
 def get_data_by_kind(rawData, kind):
+
     #把数据存储为cartoonList = [{"镖人":[1,2],"date":["2016-07-04 22:00:00","2016-07-04 22:05:22"]},{"brave":[3,56],"date":["2016-07-04 22:00:00","2016-07-04 22:05:22"]}]的形式
     
     cartoonList = []
@@ -193,6 +204,8 @@ def get_data_by_kind(rawData, kind):
             cartoonList.append(d)
     #logging.info(print(cartoonList))
     return cartoonList
+
+
 
 '''
 url: "/api/info/comment"

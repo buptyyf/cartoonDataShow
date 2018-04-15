@@ -1,7 +1,8 @@
 from app import app
 from app import db
 from datetime import datetime
-from flask.ext.login import UserMixin
+from flask_login import UserMixin
+
 
 class Info(db.Document):
     name = db.StringField()
