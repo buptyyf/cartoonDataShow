@@ -1,6 +1,6 @@
 from flask import Flask
-from flask.ext.flask_mongoengine import MongoEngine
-import flask.ext.flask_login as flask_login
+from flask_mongoengine import MongoEngine
+import flask_login as flask_login
 
 
 app = Flask(__name__)
